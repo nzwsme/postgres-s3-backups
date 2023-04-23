@@ -21,4 +21,8 @@ export const env = envsafe({
     default: "",
     allowEmpty: true,
   }),
+  BACKUP_ON_STARTUP: str({
+    default: "",
+    allowEmpty: true,
+  }),
 });

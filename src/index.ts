@@ -16,4 +16,6 @@ job.start();
 
 console.log("Backup cron scheduled...");
 
-void runner();
+if (env.BACKUP_ON_STARTUP) {
+  void runner();
+}
