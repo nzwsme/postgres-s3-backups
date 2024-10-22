@@ -8,9 +8,10 @@ WORKDIR /app
 COPY package*.json tsconfig.json ./
 COPY src ./src
 
-RUN npm ci && \
-    npm run build && \
-    npm prune --production
+RUN npm install --global yarn && \
+    yarn install --frozen-lockfile && \
+    yarn build && \
+    yarn install --production --frozen-lockfile
 
 FROM node:22-alpine
 
