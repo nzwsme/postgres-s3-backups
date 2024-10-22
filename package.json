@@ -5,18 +5,19 @@
   "main": "dist/index.js",
   "scripts": {
     "start": "node dist/index.js",
-    "build": "tsc"
+    "build": "tsc",
+    "lint": "tsc --noEmit"
   },
   "author": "Faraz Patankar",
   "license": "MIT",
   "devDependencies": {
-    "@types/cron": "2.0.1",
-    "@types/node": "18.15.13",
-    "typescript": "5.0.4"
+    "@types/node": "22.7.8",
+    "typescript": "5.6.3"
   },
   "dependencies": {
-    "@aws-sdk/client-s3": "3.317.0",
-    "cron": "2.3.0",
+    "@aws-sdk/client-s3": "3.676.0",
+    "@aws-sdk/lib-storage": "3.676.0",
+    "cron": "3.1.7",
     "envsafe": "2.0.3"
   },
   "keywords": []

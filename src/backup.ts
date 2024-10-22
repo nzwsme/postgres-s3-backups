@@ -8,6 +8,7 @@ import {
 } from "@aws-sdk/client-s3";
 import { createReadStream, unlink } from "fs";
 import { env } from "./env";
+import { Upload } from "@aws-sdk/lib-storage";
 
 const uploadToS3 = async ({ name, path }: { name: string; path: string }) => {
   console.log("Uploading backup to S3...");
@@ -25,13 +26,14 @@ const uploadToS3 = async ({ name, path }: { name: string; path: string }) => {
 
   const client = new S3Client(clientOptions);
 
-  await client.send(
-    new PutObjectCommand({
+  await new Upload({
+    client,
+    params: {
       Bucket: bucket,
       Key: name,
       Body: createReadStream(path),
-    })
-  );
+    }
+  }).done();
 
   console.log("Backup uploaded to S3...");
 };
